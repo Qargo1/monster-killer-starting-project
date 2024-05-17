@@ -2,6 +2,12 @@ html {
   font-family: sans-serif;
 }
 
+#reset-btn {
+  position: absolute;
+  top: 50px;
+  right: 100px;
+}
+
 body {
   background: #2c2c2c;
 }
@@ -24,7 +30,7 @@ progress {
 progress[value]::-webkit-progress-bar,
 progress[value] {
   background-color: #eee;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  box-shadow: 4px -3px 5px rgba(0, 0, 0, 0.25);
 }
 
 progress[value]::-webkit-progress-value {
@@ -83,4 +89,21 @@ button:active {
   border-radius: 10px;
   text-align: center;
   margin: 0 0.5rem;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+}
+
+.minions {
+  margin-right: 60px;
+  margin-left: 60px;
+  width: 180px;
+  height: 200px;
+}
+
+.rotated {
+  transform: rotate(90deg) !important;
+  margin-top: 40px;
 }
