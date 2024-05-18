@@ -4,8 +4,19 @@ html {
 
 #reset-btn {
   position: absolute;
-  top: 50px;
-  right: 100px;
+  top: 23px;
+  right: 50px;
+}
+
+.input-hp-form {
+  position: absolute;
+  margin: 8px;
+  border: 1px solid #ff0062;
+  padding: 16px;
+  top: 23px;
+  left: 50px;
+  box-shadow: 4px -3px 5px rgba(0, 0, 0, 0.25);
+  background-color: #eee;
 }
 
 body {

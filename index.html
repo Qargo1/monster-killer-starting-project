@@ -7,11 +7,17 @@
     <title>Monster Killer</title>
     <link rel="stylesheet" href="assets/styles/app.css" />
     <script src="assets/scripts/vendor.js" defer></script>
+    <script src="assets/scripts/notification.js" defer></script>
     <script src="assets/scripts/app.js" defer></script>
   </head>
   <body>
     <header>
       <button id="reset-btn">RESET</button>
+      <form class="input-hp-form">
+        <label for="xp-input">Введите максимальное XP (ваше и монстра):<br><br></label>
+        <input type="number" id="xp-input" value="100" title="Введите максимальное количество XP" placeholder="100" />
+        <input type="submit" />
+      </form>
     </header>
     <section id="health-levels">
       <h2 id="monster-health-number"><span id="bonus-monster-life"> 100</span> hp</h2>
