@@ -48,7 +48,7 @@ function checkBonusLife(monsterDamage, playerDamage) {
 
     } else {
         lostSound.play();
-        logMessage("Sorry, you've lost");
+        showMessage("Sorry, you've lost");
         heroImage.classList.add('rotated');
         attackBtn.disabled = true;
         strongAttackBtn.disabled = true;
@@ -66,7 +66,7 @@ function attackMonster(mode) {
         winSound.play();
         monsterImage.classList.add('rotated');
         writeToLog('monster_is_dead', currentPlayerHealth, currentMonsterHealth, 'none', playerDamage);
-        logMessage("Congratulations!!! You've won!");
+        showMessage("Congratulations!!! You've won!");
     } 
 
     const monsterDamage = dealDamage('player', MONSTER_ATTACK_VALUE);
@@ -94,7 +94,7 @@ function healPlayerHandler() {
         return;
     }
     if (maxHealTries <= 0) {
-        logMessage("Заклинание исцеления больше не поддается вам");
+        showMessage("Заклинание исцеления больше не поддается вам");
         healBtn.style.backgroundColor = "black";
         healABtn.disabled = true;
         return;
