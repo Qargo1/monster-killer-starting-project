@@ -95,3 +95,4 @@ function vibrateImage(duration = 300, amplitude = 20, frequency = 10) {
     }
   }, interval); // Повторяем эту функцию каждые 'interval' миллисекунд
 }
+
