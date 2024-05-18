@@ -1,7 +1,6 @@
 ## README: "monster-killer-starting-project"
 
-**Страница с развернутой игрой**
-![Обо мне]([https://github.com/Qargo1/Qargo1/blob/main/assets/about_me.png](https://monster-killer-starting-project.vercel.app/))
+![**Страница с развернутой игрой**](https://monster-killer-starting-project.vercel.app/)
 
 **Описание:**
 
