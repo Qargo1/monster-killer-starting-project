@@ -1,6 +1,6 @@
 ## README: "monster-killer-starting-project"
 
-![**Страница с развернутой игрой**](https://monster-killer-starting-project.vercel.app/)
+[**Страница с развернутой игрой**](https://monster-killer-starting-project.vercel.app/)
 
 **Описание:**
 
