@@ -19,6 +19,39 @@ html {
   background-color: #eee;
 }
 
+.game-log-form {
+  position: absolute;
+  margin: 8px;
+  border: 1px solid #ff0062;
+  padding: 16px;
+  top: 200px;
+  left: 50px;
+  box-shadow: 4px -3px 5px rgba(0, 0, 0, 0.25);
+  background-color: #eee;
+  width: 300px;
+  height: 100px;
+}
+
+.alert-message {
+  position: absolute;
+  margin: auto;
+  border: 1px solid #ff0062;
+  padding: 16px;
+  margin: 8px;
+  top: 23px;
+  left: 15%;
+  box-shadow: 4px -3px 5px rgba(0, 0, 0, 0.25);
+  background-color: #eee;
+  width: 400px;
+  height: 100px;
+  display: none;
+}
+
+.close-button {
+  position: absolute;
+  right: 20px;
+}
+
 body {
   background: #2c2c2c;
 }

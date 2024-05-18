@@ -9,7 +9,9 @@ const logBtn = document.getElementById('log-btn');
 
 const resetBtn = document.getElementById('reset-btn');
 
-const maxHealthForm = document.getElementById('xp-input');
+const xpInput = document.getElementById('xp-input');
+const maxHealthForm = document.querySelector('.input-hp-form');
+
 
 const playerHealthNumber = document.getElementById('player-health-number');
 const monsterHealthNumber = document.getElementById('monster-health-number');
