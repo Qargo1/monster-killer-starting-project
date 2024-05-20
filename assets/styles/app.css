@@ -90,6 +90,7 @@
   #alert-message-popup > .close-button {
     z-index: 1;
     color: black;
+    font-size: 1rem;
   }
 
   body > .first-column-up {
