@@ -97,12 +97,12 @@
     order: 1;
     height: 60px;
     padding-left: 20px;
-    margin-top: 5px;
+    margin-top: 10px;
   }
 
   body > .second-column-up {
     order: 2;
-    margin-top: 5px;
+    margin-top: 10px;
     margin-left: 20px;
     height: 240px;
     padding: 0px;
@@ -110,7 +110,7 @@
 
   .second-column-down {
     order: 3;
-    margin-top: 5px;
+    margin-top: 0px;
     margin-left: 20px;
     height: 120px;
     padding: 0px;
