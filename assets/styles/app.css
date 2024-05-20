@@ -72,8 +72,8 @@
 
   #reset-btn {
     position: fixed;
-    top: 5px;
-    right: 5px;
+    top: 20px;
+    right: 10px;
     left: auto;
     width: 60px;
   }
@@ -95,7 +95,7 @@
   body > .first-column-up {
     transform: none;
     order: 1;
-    height: 50px;
+    height: 60px;
     padding-left: 20px;
     margin-top: 5px;
   }
