@@ -42,7 +42,7 @@ function checkBonusLife(monsterDamage) {
             currentPlayerHealth += monsterDamage;
             increasePlayerHealth(monsterDamage);
             updatePlayerHealth();
-            return True
+            return true
         case (!hasBonusChance && currentPlayerHealth <= 0):
             lostSound.play();
             showMessage("Sorry, you've lost");
@@ -51,7 +51,7 @@ function checkBonusLife(monsterDamage) {
             attackBtn.disabled = true;
             strongAttackBtn.disabled = true;
             healBtn.disabled = true;
-            return True
+            return true
     }
 }
 
@@ -158,7 +158,13 @@ function writeToLog(eventType, currentPlayerHealth, currentMonsterHealth, damage
         damage_to_monster: damageToMonster
     }
     battleLog.push(logEntry);
-    console.log(battleLog);
+}
+
+function printLog() {
+    for (const el of battleLog) {
+        console.log(el);
+    }
+    showMessage("log printed in console");
 }
 
 function reset() {
@@ -197,3 +203,4 @@ attackBtn.addEventListener('click', attackHandler);
 strongAttackBtn.addEventListener('click', strongAttackHandler);
 healBtn.addEventListener('click', healPlayerHandler);
 resetBtn.addEventListener('click', reset);
+logBtn.addEventListener('click', printLog); 
