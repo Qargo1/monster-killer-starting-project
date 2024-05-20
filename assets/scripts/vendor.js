@@ -12,7 +12,6 @@ const resetBtn = document.getElementById('reset-btn');
 const xpInput = document.getElementById('xp-input');
 const maxHealthForm = document.querySelector('.input-hp-form');
 
-
 const playerHealthNumber = document.getElementById('player-health-number');
 const monsterHealthNumber = document.getElementById('monster-health-number');
 const bonusPlayerHealth = document.getElementById('bonus-player-life');
@@ -46,13 +45,13 @@ function resetGame(value) {
   playerHealthBar.value = value;
   monsterHealthBar.value = value;
   playerHealthNumber.value = value;
-  playerHealthNumber.textContent = value;
+  playerHealthNumber.textContent = value + ' hp';
   monsterHealthNumber.value = value;
-  monsterHealthNumber.textContent = value;
+  monsterHealthNumber.textContent = value + ' hp';
 }
 
 function removeBonusLife() {
-  bonusLifeEl.parentNode.removeChild(bonusLifeEl);
+  bonusLifeEl.style.display = 'none';
 }
 
 function setPlayerHealth(health) {

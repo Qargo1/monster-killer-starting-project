@@ -12,6 +12,13 @@ let maxHealTries = 3;
 let hasBonusChance = true;
 let playerLost = false;
 
+function disableButtons() {
+    attackBtn.disabled = true;
+    strongAttackBtn.disabled = true;
+    healBtn.disabled = true;
+}
+
+
 function resetBasicStats() {
     chosenMaxLife = 100;
     currentMonsterHealth = chosenMaxLife;
@@ -28,14 +35,14 @@ function attackPattern() {
     updateMonsterHealth();
 }
 
-showMessage('При желании, введите максимальное hp (ваше и монстра) в поле слева.');
+showMessage('При желании', ', введите максимальное hp (ваше и монстра) в поле снизу.', 'coral');
 
 adjustHealthBars(chosenMaxLife);
 
 function checkBonusLife(monsterDamage) {
     switch (true) {
         case (hasBonusChance && currentPlayerHealth <= 0):
-            logMessage("You've used your bonus chance!");
+            logMessage("You've used your bonus chance!", "red", "1.5rem");
             writeToLog('player_used_bonus_life', currentPlayerHealth, currentMonsterHealth, -monsterDamage, 'none');
             hasBonusChance = false;
             removeBonusLife();
@@ -45,12 +52,11 @@ function checkBonusLife(monsterDamage) {
             return true
         case (!hasBonusChance && currentPlayerHealth <= 0):
             lostSound.play();
-            showMessage("Sorry, you've lost");
+            logMessage("Sorry, you've lost", "red", "1.5rem");
+            showMessage("You've lost, but Please, try again! ", ' You can start anew using a reset button on the right!', 'DeepSkyBlue');
             writeToLog('player_is_dead', currentPlayerHealth, currentMonsterHealth, monsterDamage, 'none');
             heroImage.classList.add('rotated');
-            attackBtn.disabled = true;
-            strongAttackBtn.disabled = true;
-            healBtn.disabled = true;
+            disableButtons()
             return true
     }
 }
@@ -63,9 +69,11 @@ function attackMonster(mode) {
     switch (true) {
         case (currentMonsterHealth <= 0):
             winSound.play();
+            logMessage("Congratulations!!! You've won!", "blue", "1.5rem");
+            showMessage("You've won! But you can try your luck again! ", 'Start anew - using a reset button on the right!', 'DeepSkyBlue');
             writeToLog('monster_is_dead', currentPlayerHealth, currentMonsterHealth, 'none', playerDamage);
-            showMessage("Congratulations!!! You've won!");
             monsterImage.classList.add('rotated');
+            disableButtons()
             break;
         case (currentMonsterHealth > 0):
             attackPlayer(playerDamage)
@@ -95,7 +103,7 @@ function attackHandler() {
 function strongAttackHandler() {
     attackMonster(STRONG_ATTACK_VALUE);
     // Отображение сообщения пользователю
-    logMessage("Вы измождены после сильной атаки, повторить её не удастся");
+    logMessage("Вы измождены после сильной атаки, повторить её не удастся", 'red');
     // Изменение цвета кнопки на черный
     strongAttackBtn.style.backgroundColor = "black";
     // Отключение кнопки
@@ -105,7 +113,7 @@ function strongAttackHandler() {
 function healPlayerHandler() {
     switch (true) {
         case (currentPlayerHealth === chosenMaxLife):
-            logMessage("Вы отвлекслись на ворона. Вам повезло! Монстр отвлекся вместе с вами");
+            logMessage("Вы отвлекслись на ворона. Вам повезло! Монстр отвлекся вместе с вами", 'LimeGreen');
             return;
         case (maxHealTries <= 0):
             showMessage("Заклинание исцеления больше не поддается вам");
@@ -118,7 +126,7 @@ function healPlayerHandler() {
     switch (true) {
         case (randomHealValue < 0):
             hitSound.play();
-            logMessage(`Вот неудача - вы не успели закончить заклинание и были атакованы на ${randomHealValue} hp`);
+            logMessage(`Вот неудача - вы не успели закончить заклинание и были атакованы на ${randomHealValue} hp`, 'OrangeRed');
             currentPlayerHealth += randomHealValue;
             playerHealthBar.value = +playerHealthBar.value + randomHealValue;
             updatePlayerHealth();
@@ -126,18 +134,18 @@ function healPlayerHandler() {
             break;
         case (randomHealValue === 0):
             healSound.play();
-            logMessage("Из вас вышел отличный целитель! Вы исцелились на 0 hp");
+            logMessage("Из вас вышел отличный целитель! Вы исцелились на 0 hp", 'LimeGreen');
             break;
         case (currentPlayerHealth + randomHealValue <= chosenMaxLife):
             healSound.play();
             writeToLog('player_healed', currentPlayerHealth, currentMonsterHealth, -randomHealValue, 'none');
-            logMessage(`Вы исцелились на ${randomHealValue} hp`);
+            logMessage(`Вы исцелились на ${randomHealValue} hp`, 'DodgerBlue');
             increasePlayerHealth(randomHealValue);
             currentPlayerHealth += randomHealValue;
             updatePlayerHealth();
             break;
         case (currentPlayerHealth + randomHealValue > chosenMaxLife):
-            logMessage(`Вы полностью здоровы!`);
+            logMessage(`Вы полностью здоровы!`, 'DodgerBlue');
             writeToLog('player_healed_fully', currentPlayerHealth, currentMonsterHealth, -randomHealValue, 'none');
             increasePlayerHealth(chosenMaxLife - randomHealValue);
             currentPlayerHealth = chosenMaxLife;
@@ -169,10 +177,14 @@ function printLog() {
 
 function reset() {
     writeToLog('reset', currentPlayerHealth, currentMonsterHealth, 'none', 'none');
+    logForm.style.height = initialHeight;
+    logForm.style.height = 
+    logCounter = 0;
     resetBasicStats();
     xpInput.value = chosenMaxLife;
     resetGame(chosenMaxLife);
     adjustHealthBars(chosenMaxLife);
+    bonusLifeEl.style.display = '';
 
     strongAttackBtn.disabled = false;
     strongAttackBtn.style.backgroundColor = "#ff0062";
@@ -184,14 +196,13 @@ function reset() {
 
     const logElements = logElement.querySelectorAll('li');
     logElements.forEach(element => element.parentNode.removeChild(element));
-    logElement.style.height = 100 + 'px';
 }
 
 maxHealthForm.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent default form submission
     const MaxLife = parseInt(xpInput.value); // Get the input value
     reset()
-    showMessage(`Максимальное hp выставлено на: ${MaxLife}`);
+    showMessage(`Максимальное hp выставлено на: ${MaxLife} hp`, '', 'gray');
     currentMonsterHealth = MaxLife;
     currentPlayerHealth = MaxLife;
     
@@ -204,3 +215,25 @@ strongAttackBtn.addEventListener('click', strongAttackHandler);
 healBtn.addEventListener('click', healPlayerHandler);
 resetBtn.addEventListener('click', reset);
 logBtn.addEventListener('click', printLog); 
+
+window.addEventListener('resize', function() {
+    const mediaQuery = window.matchMedia('(max-width: 969px)');
+    if (mediaQuery.matches) {
+        formHeightAfterMedia = 280;
+        logFormHeight = formHeightAfterMedia + 'px';
+        logForm.style.height = logFormHeight; // Перезапишите значение высоты
+        const logElements = logElement.querySelectorAll('li');
+        logElements.forEach(element => element.parentNode.removeChild(element));
+    }
+});
+
+window.addEventListener('resize', function() {
+    const mediaQuery = window.matchMedia('(min-width: 971px)');
+    if (mediaQuery.matches) {
+        formHeightAfterMedia = 300;
+        logFormHeight = formHeightAfterMedia + 'px';
+        logForm.style.height = logFormHeight; // Перезапишите значение высоты
+        const logElements = logElement.querySelectorAll('li');
+        logElements.forEach(element => element.parentNode.removeChild(element));
+    }
+});

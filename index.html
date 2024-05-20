@@ -12,39 +12,43 @@
   </head>
   <body>
     <header>
-      <button id="reset-btn">RESET</button>
     </header>
-    <section>
+    <section class="alert-message" id="alert-message-popup">
+      <span class="message-text" id="game-message"></span><br>
+      <button class="close-button">Закрыть</button>
+    </section>
+    <section class="first-column-up">
       <form class="input-hp-form">
         <label for="xp-input">Максимальное XP: <br><br></label>
         <input type="number" id="xp-input" value="100" min="1" max="1000" title="Введите максимальное количество XP" placeholder="100" />
         <input type="submit" value="ok"/>
       </form>
-      <span class="alert-message" id="alert-message-popup">
-        <span class="message-text" id="game-message"></span><br>
-        <button class="close-button">Закрыть</button>
-      </span>
+    </section>
+    <section class="first-column-down">
       <ul class="game-log-form" id="game-log"></ul>
     </section>
-    <section id="health-levels">
+    <section class="second-column-up">
+      <button class="reset-button" id="reset-btn">RESET</button>
       <h2 id="monster-health-number"><span id="bonus-monster-life"> 100</span> hp</h2>
-      <h2>MONSTER HEALTH>1</span></h2>
+      <h2>MONSTER HEALTH</span></h2>
       <progress id="monster-health" max="100" value="100">100%</progress>
       <h2 id="player-health-number"><span id="bonus-player-life"> 100</span> hp</h2>
       <h2>PLAYER HEALTH<span id="bonus-life">1</span></h2>
       <progress id="player-health" max="100" value="100">100%</progress>
     </section>
-    <section id="controls">
+    <section class="second-column-down">
       <button id="attack-btn">ATTACK</button>
       <button id="strong-attack-btn">STRONG ATTACK</button>
       <button id="heal-btn">HEAL</button>
       <button id="log-btn">SHOW LOG</button>
     </section>
+    <section class="image-container">
+      <div>
+        <img class="minions" id="monster-image" src="/assets/images/monster.png" alt="Изображение с монстром">
+        <img class="minions" id="hero-image" src="/assets/images/hero.png" alt="Изображение с героем">
+      </div>
+    </section>
+    <footer>
+    </footer>
   </body>
-  <footer>
-    <div class="image-container">
-      <img class="minions" id="monster-image" src="/assets/images/monster.png" alt="Изображение с монстром">
-      <img class="minions" id="hero-image" src="/assets/images/hero.png" alt="Изображение с героем">
-    </div>
-  </footer>
 </html>
