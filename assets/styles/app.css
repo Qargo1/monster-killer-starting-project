@@ -7,6 +7,7 @@
   body {
     grid-template-columns: 280px 240px !important;
   }
+
   body > .alert-message {
     position: relative;
     width: 180px;
@@ -62,59 +63,66 @@
 
 @media (max-width: 480px) {
   body {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
-  }
-  body > .alert-message {
-    position: relative;
-    width: 180px;
-    height: 130px;
-    gap: 5px;
-    padding-bottom: 0px;
+    min-width: 240px !important;
+    max-width: 300px !important;
+    align-items: stretch;
   }
 
-  .message-text {
-    font-size: 1rem;
+  #reset-btn {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    left: auto;
+    width: 60px;
   }
 
-  .reset-button {
-    left: 60px;
-  }
-
-  .first-column-up {
-    transform: translateY(-130px);
-    max-width: 220px;
-  }
-
-  body > .first-column-down {
-    transform: translateY(-220px);
-    max-width: 240px;
-    height: 280px;
-    min-height: 260px;
-    padding-right: 5px;
-  }
-
-  .close-button {
+  #alert-message-popup {
     position: absolute;
-    right: 8px;
-    bottom: 2px;
-    border-radius: 20px;
+    transform: none;
+    height: 120px;
+    font-size: 0.1px !important;
+    z-index: 1;
+    margin-top: 5px;
   }
 
-  .second-column-down {
-    height: 140px;
-    font-size: 1rem;
+  #alert-message-popup > .close-button {
+    z-index: 1;
+    color: black;
   }
 
-  section > button {
-    height: 20px;
-    align-self: center;
+  body > .first-column-up {
+    transform: none;
+    order: 1;
+    height: 50px;
+    padding-left: 20px;
+    margin-top: 5px;
+  }
+
+  body > .second-column-up {
+    order: 2;
+    margin-top: 5px;
+    margin-left: 20px;
+    height: 240px;
     padding: 0px;
   }
 
-  div > .minions {
-    width: 100px;
-    height: 110px;
+  .second-column-down {
+    order: 3;
+    margin-top: 5px;
+    margin-left: 20px;
+    height: 120px;
+    padding: 0px;
+  }
+
+  .image-container {
+    order: 4;
+  }
+
+  body > .first-column-down {
+    order: 5;
+    transform: none;
   }
 }
 
